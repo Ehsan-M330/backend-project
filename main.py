@@ -30,7 +30,11 @@ def get_db():
 
 @app.get('/getbooks')
 def get_books(db:Session=Depends(get_db)):
-    return db.query(models.Books).all()
+    return db.query(models.Books).limit(1000).all()
+
+@app.get('/getbook/{book_name}')
+def get_book(book_name:str,db:Session=Depends(get_db)):
+    return db.query(models.Books).filter(models.Books.name==book_name).value(models.Books.writer)
 
 @app.post('/addbook')
 async def add_book(book:schemas.BooksBase, db:Session=Depends(get_db)):
