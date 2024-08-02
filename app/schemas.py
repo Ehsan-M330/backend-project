@@ -9,3 +9,10 @@ class BooksBase(BaseModel):
 
     class Config:
         from_attributes = True
+
+class BookUpdate(BaseModel):
+    number :int
+    increase :bool
+
+    class config:
+        from_attributes=True

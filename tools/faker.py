@@ -1,5 +1,6 @@
-import main,models
-from faker import Faker
+import main,app.models as models
+from tools.faker import Faker
+
 faker=Faker()
 
 db = next(main.get_db())
